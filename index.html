@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#6035ed" />
+    <meta
+      name="description"
+      content="Five vaults. One curious mind. Send a solver or crack the puzzles yourself in Latchlab, a free AI puzzle playground."
+    />
+    <title>Latchlab · crack something curious</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Unbounded:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="paper intro">
+        <a class="brand" href="#vault/1"
+          ><span class="brand-mark">L<span>•</span></span
+          >latchlab<span class="brand-plus">®</span></a
+        >
+        <div class="headline">
+          <div class="eyebrow">THE VAULTS ARE WAITING</div>
+          <h1>
+            Small locks.<br />Big <em>brain<br />energy.</em>
+          </h1>
+          <div class="stamp">
+            5 VAULTS<br /><strong>✳</strong><br />YOUR MOVE
+          </div>
+        </div>
+        <div class="steps-strip">
+          <span>Pick</span><b>✳</b><span>Decode</span><b>✳</b
+          ><span>Unlock</span>
+        </div>
+        <article class="ticket">
+          <header>
+            <span id="ticket-number">VAULT 01</span><span>✦</span>
+          </header>
+          <div class="ticket-body">
+            <div class="ticket-title">
+              <h2 id="vault-name">Ember</h2>
+              <span class="status" id="vault-status">UNCRACKED</span>
+            </div>
+            <p class="ticket-line">A little curiosity opens a lot.</p>
+            <ul id="vault-facts"></ul>
+            <div class="prize">
+              <div>
+                <span class="eyebrow">UP FOR GRABS</span>
+                <div><strong id="points">250</strong><small> PTS</small></div>
+              </div>
+              <span class="round-label">JUST<br />FOR THE<br />THRILL ✳</span>
+            </div>
+            <button class="button dark" id="stages-button">
+              Peek at the stages <span>⊞</span>
+            </button>
+          </div>
+          <footer>
+            <span class="barcode" aria-hidden="true"></span
+            ><span>YOUR TOTAL<br /><b id="total-points">0 PTS</b></span>
+          </footer>
+        </article>
+        <nav
+          class="vault-picker"
+          aria-label="Choose a vault"
+          id="vault-picker"
+        ></nav>
+        <div class="intro-bottom">
+          <span>INDEPENDENT MINDS WELCOME.</span><span>EST. 2026</span>
+        </div>
+      </aside>
+      <main class="room">
+        <div class="room-top">
+          <span class="pill"
+            ><span class="live-dot"></span>
+            <span id="room-state">Playground online</span></span
+          ><button class="text-button" id="how-button">
+            How it works <span>↗</span>
+          </button>
+        </div>
+        <div class="room-heading">
+          <span class="eyebrow">A PUZZLE PLAYGROUND FOR HUMANS + MACHINES</span>
+          <div>KEEP IT <span>CURIOUS.</span></div>
+        </div>
+        <div
+          class="scene"
+          id="scene"
+          role="img"
+          aria-label="Interactive 3D vault. Use the previous and next buttons to select a vault."
+        ></div>
+        <div class="scene-fallback" id="scene-fallback" hidden>
+          <strong>YOUR NEXT CHALLENGE</strong>
+          <p>The puzzles are ready. Select a vault below to begin.</p>
+        </div>
+        <div class="floating-label">
+          <span>SECURITY LEVEL</span><b id="difficulty">01 / WARM-UP</b>
+        </div>
+        <div class="safe-navigation">
+          <button id="prev" aria-label="Previous vault">←</button>
+          <div>
+            <span id="scene-number">01</span>
+            <h2 id="scene-name">Ember</h2>
+            <small id="scene-caption"
+              >EVERY GREAT HEIST STARTS SOMEWHERE.</small
+            >
+          </div>
+          <button id="next" aria-label="Next vault">→</button>
+        </div>
+        <div class="room-bottom">
+          <div>
+            <span class="live-dot"></span
+            ><span id="feed">Five locked vaults. Make the first move.</span>
+          </div>
+          <span class="practice-badge">PRACTICE MODE · NO REAL MONEY</span>
+        </div>
+      </main>
+      <aside class="paper controls" id="controls">
+        <header class="controls-header">
+          <span class="number" id="panel-number">01</span>
+          <div>
+            <span class="eyebrow">YOUR MIND AT WORK</span>
+            <h2 id="panel-name">Ember</h2>
+          </div>
+          <span class="free-badge">FREE<br />TO PLAY</span>
+        </header>
+        <section class="setup">
+          <div class="control-step">
+            <span class="step-number">1</span>
+            <div>
+              <h3>Pick your player</h3>
+              <div class="segmented" id="players">
+                <button class="selected" data-player="bot">✳ Lab bot</button
+                ><button data-player="human">☻ You</button
+                ><button data-player="ai">⌘ Your AI</button>
+              </div>
+              <p class="hint" id="player-hint">
+                Our built-in solver. No key, no setup.
+              </p>
+            </div>
+          </div>
+          <div class="control-step">
+            <span class="step-number">2</span>
+            <div>
+              <h3 id="setting-title">Set the pace</h3>
+              <div id="pace-controls" class="segmented">
+                <button data-pace="1800">Easy</button
+                ><button class="selected" data-pace="850">Steady</button
+                ><button data-pace="250">Turbo</button>
+              </div>
+              <div id="ai-controls" hidden>
+                <label for="provider">Provider</label
+                ><select id="provider">
+                  <option value="openai">OpenAI</option>
+                  <option value="openrouter">OpenRouter</option></select
+                ><label for="model">Model ID</label
+                ><input
+                  id="model"
+                  value="gpt-4.1-mini"
+                  autocomplete="off"
+                  spellcheck="false"
+                /><label for="api-key">API key</label
+                ><input
+                  id="api-key"
+                  type="password"
+                  placeholder="Your provider API key"
+                  autocomplete="off"
+                  spellcheck="false"
+                />
+                <p class="hint">
+                  Sent only to your selected provider. Never saved. Provider
+                  usage may cost money.
+                </p>
+              </div>
+              <p id="human-hint" class="hint" hidden>
+                Read each clue and submit your answer below.
+              </p>
+            </div>
+          </div>
+          <button id="launch" class="launch">
+            Let’s crack it <span>✳</span></button
+          ><button id="stop" class="button stop" hidden>Pause run</button>
+          <div class="run-progress">
+            <div>
+              <span id="run-label">READY WHEN YOU ARE</span
+              ><b id="progress-text">0 / 3</b>
+            </div>
+            <div class="progress-track"><div id="progress-bar"></div></div>
+          </div>
+        </section>
+        <section class="terminal">
+          <header>
+            <b>Inside the mind</b><span id="log-state">STANDING BY</span>
+          </header>
+          <div id="log" role="log" aria-live="polite"></div>
+          <form id="answer-form" hidden>
+            <label for="answer">Your answer</label>
+            <div>
+              <input id="answer" autocomplete="off" required /><button
+                class="button dark"
+                type="submit"
+              >
+                Try
+              </button>
+            </div>
+          </form>
+        </section>
+        <footer class="controls-footer">
+          <span>Brains over brute force.</span
+          ><button class="text-button" id="reset">Reset progress</button>
+        </footer>
+      </aside>
+    </div>
+    <dialog id="modal">
+      <div class="modal-head">
+        <h2 id="modal-title"></h2>
+        <button id="close-modal" aria-label="Close dialog">×</button>
+      </div>
+      <div id="modal-body"></div>
+    </dialog>
+    <div id="toast" role="status" hidden></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
